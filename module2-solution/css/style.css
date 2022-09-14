@@ -12,11 +12,12 @@ h1 {
 
 /* Simple Responsive Framework. */
 .row {
-  width: 100%;
 /*  position: relative;
 */}
 
 div#position {
+  height: 250px;
+  overflow: scroll;
 /*  position: relative;
 */}
 
@@ -48,11 +49,14 @@ p {
   float: right;
   position: relative;
   text-align: center;
-/*  padding: 1%;
-*/}
+  overflow: visible;
+  padding: 5%;
+}
 
 .text {
 	padding-top: 13%;
+
+
 }
 
 .chicken {
