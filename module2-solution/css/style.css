@@ -13,8 +13,13 @@ h1 {
 /* Simple Responsive Framework. */
 
 div#position {
-  height: 250px;
+  height: 200px;
+  overflow: hidden;
+}
+
+div#position:hover {
   overflow: scroll;
+  cursor: s-resize;
 }
 
 p {
