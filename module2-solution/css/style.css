@@ -40,8 +40,18 @@ p {
   padding: 5%;
 }
 
+
+.mobile-item {
+  width: 35%;
+  float: right;
+  position: relative;
+  text-align: center;
+  overflow: visible;
+  padding: 0%;
+}
+
 .text {
-	padding-top: 13%;
+	padding-top: 16%;
 }
 
 .chicken {
