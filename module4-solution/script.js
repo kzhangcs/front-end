@@ -1,5 +1,5 @@
 (function () {
-    console.log("Hello ")
+    // console.log("Hello ")
 
     // *******************************
     // START HERE IF YOU WANT A MORE CHALLENGING STARTING POINT FOR THIS ASSIGNMENT
@@ -50,7 +50,7 @@
     // Look up these methods on Mozilla Developer Network web site if needed.
     // var firstLetter =
         var firstLetter = names[name].charAt(0).toLowerCase();
-        console.log(firstLetter);
+        // console.log(firstLetter);
 
     // STEP 12:
     // Compare the 'firstLetter' retrieved in STEP 11 to lower case
