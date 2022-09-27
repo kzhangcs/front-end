@@ -63,4 +63,34 @@
         helloSpeaker.speak(names[name]);
     }
     }
+
+    // console.log(byeSpeaker.speakSimple("byeSpeaker.speakSimple"));
+    // console.log(helloSpeaker.speakSimple("helloSpeaker.speakSimple"));
+
+    const map1 = names.map(x => {
+            // console.log(x.charAt(0).toLowerCase() == "j")
+
+            if (x.charAt(0).toLowerCase() == "j") {
+                return byeSpeaker.speakSimple(x);
+            } else {
+                return helloSpeaker.speakSimple(x);
+            }
+        }
+    );
+
+    // const map1 = names.map(x =>
+    //     x.charAt(0).toLowerCase == "j" ?
+    //     byeSpeaker.speakSimple(x):
+    //     helloSpeaker.speakSimple(x)
+    // );
+    // var names2 = ["Yaakov", "John", "Jen", "Jason", "Paul", "Frank", "Larry", "Paula", "Laura", "Jim"];
+    // const map1 = names2.map(x =>
+    //     x.charAt(0).toLowerCase == "j" ?
+    //     byeSpeaker.speakSimple(x):
+    //     helloSpeaker.speakSimple(x)
+    // );
+
+    for (var index in map1) {
+        console.log(map1[index]);
+    }
 })();
