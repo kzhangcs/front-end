@@ -106,15 +106,28 @@
       }, 0);
 
       var {hello, bye} = names.reduce((total,currentValue) => {
-        total.hello.push(byeSpeaker.speakSimple(currentValue));
+        if (currentValue.charAt(0).toLowerCase() == "j") {
+            total.bye.push(byeSpeaker.speakSimple(currentValue));
+        } else {
+            total.hello.push(helloSpeaker.speakSimple(currentValue));
+        }
         return total;
       },{hello: [], bye: []});
 
 
     // const reduce2 = names.reduce(
     //     (byeSpeaker.speakSimple, currentValue) => [byeSpeaker.speakSimple(currentValue)], hello);
-      
-      console.log(hello);
-      console.log(bye);
+    
+    console.log("hello array");
+
+    for (var index in hello) {
+        console.log(hello[index]);
+    }
+
+    console.log("bye array");
+
+    for (var index in bye) {
+        console.log(bye[index]);
+    }
 
 })();
