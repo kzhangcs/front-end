@@ -66,7 +66,7 @@
 
     // console.log(byeSpeaker.speakSimple("byeSpeaker.speakSimple"));
     // console.log(helloSpeaker.speakSimple("helloSpeaker.speakSimple"));
-
+    console.log("part2: Using Array.prototype.map function");
     const map1 = names.map(x => {
             // console.log(x.charAt(0).toLowerCase() == "j")
 
@@ -93,4 +93,22 @@
     for (var index in map1) {
         console.log(map1[index]);
     }
+
+    console.log("part3: Using Array.prototype.reduce function");
+    const hello = [];
+
+    // let reduce1 = names.reduce(byeSpeaker.speakSimple(reduce1));
+
+    const reduce1 = names.reduce((total, currentValue) => {
+        return total + currentValue;
+      }, 0);
+
+      var reduce3 = names.reduce((total,currentValue) => [...total, byeSpeaker.speakSimple(currentValue)], hello);
+
+
+    // const reduce2 = names.reduce(
+    //     (byeSpeaker.speakSimple, currentValue) => [byeSpeaker.speakSimple(currentValue)], hello);
+      
+      console.log(reduce3);
+
 })();
