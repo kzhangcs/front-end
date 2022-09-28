@@ -95,7 +95,9 @@
     }
 
     console.log("part3: Using Array.prototype.reduce function");
-    const hello = [];
+    // const hello = [];
+    const bye = [];
+    const total = [];
 
     // let reduce1 = names.reduce(byeSpeaker.speakSimple(reduce1));
 
@@ -103,12 +105,15 @@
         return total + currentValue;
       }, 0);
 
-      var reduce3 = names.reduce((total,currentValue) => [...total, byeSpeaker.speakSimple(currentValue)], hello);
+      var hello = names.reduce((total,currentValue) => {
+        total.push(byeSpeaker.speakSimple(currentValue));
+        return total;
+      },[]);
 
 
     // const reduce2 = names.reduce(
     //     (byeSpeaker.speakSimple, currentValue) => [byeSpeaker.speakSimple(currentValue)], hello);
       
-      console.log(reduce3);
+      console.log(hello);
 
 })();
