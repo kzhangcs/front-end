@@ -64,12 +64,8 @@
     }
     }
 
-    // console.log(byeSpeaker.speakSimple("byeSpeaker.speakSimple"));
-    // console.log(helloSpeaker.speakSimple("helloSpeaker.speakSimple"));
-    console.log("part2: Using Array.prototype.map function");
+    console.log("In addition to the regular requirements, research how Array.prototype.map function works.");
     const map1 = names.map(x => {
-            // console.log(x.charAt(0).toLowerCase() == "j")
-
             if (x.charAt(0).toLowerCase() == "j") {
                 return byeSpeaker.speakSimple(x);
             } else {
@@ -78,53 +74,24 @@
         }
     );
 
-    // const map1 = names.map(x =>
-    //     x.charAt(0).toLowerCase == "j" ?
-    //     byeSpeaker.speakSimple(x):
-    //     helloSpeaker.speakSimple(x)
-    // );
-    // var names2 = ["Yaakov", "John", "Jen", "Jason", "Paul", "Frank", "Larry", "Paula", "Laura", "Jim"];
-    // const map1 = names2.map(x =>
-    //     x.charAt(0).toLowerCase == "j" ?
-    //     byeSpeaker.speakSimple(x):
-    //     helloSpeaker.speakSimple(x)
-    // );
-
     for (var index in map1) {
         console.log(map1[index]);
     }
 
-    console.log("part3: Using Array.prototype.reduce function");
-    // const hello = [];
-    // const bye = [];
-    const total = [];
+    console.log("In addition to the previous requirements, research how Array.prototype.reduce function works.");
 
-    // let reduce1 = names.reduce(byeSpeaker.speakSimple(reduce1));
-
-    const reduce1 = names.reduce((total, currentValue) => {
-        return total + currentValue;
-      }, 0);
-
-      var {hello, bye} = names.reduce((total,currentValue) => {
+    var {hello, bye} = names.reduce((total,currentValue) => {
         if (currentValue.charAt(0).toLowerCase() == "j") {
             total.bye.push(byeSpeaker.speakSimple(currentValue));
         } else {
             total.hello.push(helloSpeaker.speakSimple(currentValue));
         }
         return total;
-      },{hello: [], bye: []});
-
-
-    // const reduce2 = names.reduce(
-    //     (byeSpeaker.speakSimple, currentValue) => [byeSpeaker.speakSimple(currentValue)], hello);
-    
-    console.log("hello array");
+    },{hello: [], bye: []});
 
     for (var index in hello) {
         console.log(hello[index]);
     }
-
-    console.log("bye array");
 
     for (var index in bye) {
         console.log(bye[index]);
