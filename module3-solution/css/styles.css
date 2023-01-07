@@ -123,7 +123,7 @@ body {
 #menu-tile, #specials-tile, #map-tile {
   height: 700px;
   width: 100%;
-  padding-top: 15%;
+  padding-top: 60px;
   padding-left: 5%;
   padding-right: 5%;
   margin-bottom: 15px;
@@ -138,22 +138,28 @@ body {
   background: url('../images/menu-tile.jpg') no-repeat;
   background-position: center;
 }*/
-#specials-tile {
+/*#specials-tile {
   background: url('../images/specials-tile.jpg') no-repeat;
   background-position: center;
-}
-#menu-tile span, #specials-tile span, #map-tile span {
+}*/
+#menu-tile h3, #specials-tile span, #map-tile span {
   position: absolute;
   top: 0;
   right: 0;
-  margin-bottom: 15px;
+/*  bottom: 20%;
+  padding-bottom: 15px;
+  margin-bottom: 15px;*/
   width: 100%;
   text-align: center;
-  font-size: 1.6em;
+  /*font-size: 1.6em;*/
   /*background-color: #000;*/
   color: #fff;
   opacity: .8;
 }
+
+/*#menu-tile span {
+  margin-top: 50px;
+}*/
 
 /* END HOME PAGE */
 
