@@ -150,7 +150,7 @@ body {
   padding-bottom: 15px;
   margin-bottom: 15px;*/
   width: 100%;
-  text-align: center;
+  /*text-align: center;*/
   /*font-size: 1.6em;*/
   /*background-color: #000;*/
   color: #fff;
@@ -162,6 +162,18 @@ body {
 }*/
 
 /* END HOME PAGE */
+
+/* MENU CATEGORIES PAGE */
+
+h3#menu-categories-title {
+  margin-bottom: 30px;
+}
+
+/*#menu-categories-title + div {
+  margin-bottom: 50px;
+  padding-bottom: 100px;
+}*/
+/* END MENU CATEGORIES PAGE */
 
 /********** Large devices only **********/
 @media (min-width: 1200px) {
