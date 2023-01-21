@@ -130,6 +130,7 @@ body {
   position: relative;
   border: 2px solid #3F0C1F;
   overflow: hidden;
+  background-color: #222;
 }
 /*#menu-tile:hover, #specials-tile:hover, #map-tile:hover {
   box-shadow: 0 1px 5px 1px #cccccc;
@@ -229,6 +230,10 @@ h3#menu-categories-title {
   }
   .navbar-brand p img { /* Star-K */
     height: 20px;
+  }
+
+  #collapsable-nav { /* Collapsed nav menu */
+    background-color: #222;
   }
 
   #collapsable-nav a { /* Collapsed nav menu text */
