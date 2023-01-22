@@ -22,6 +22,7 @@ var menuItemsUrl =
   "https://coursera-jhu-default-rtdb.firebaseio.com/menu_items/";
 var menuItemsTitleHtml = "snippets/menu-items-title.html";
 var menuItemHtml = "snippets/menu-item.html";
+var aboutHtmlUrl = "snippets/about-snippet.html";
 
 // Convenience function for inserting innerHTML for 'select'
 var insertHtml = function (selector, html) {
@@ -149,6 +150,25 @@ dc.loadMenuCategories = function () {
     allCategoriesUrl,
     buildAndShowCategoriesHTML);
 };
+
+// Load the menu categories view
+dc.loadMenuCategories2 = function () {
+  showLoading("#main-content");
+  $ajaxUtils.sendGetRequest(
+    allCategoriesUrl,
+    buildAndShowHomeHTML2, // ***** <---- TODO: STEP 1: Substitute [...] ******
+    true); // Explicitly setting the flag to get JSON from server processed into an object literal
+};
+
+function buildAndShowHomeHTML2 (categories) {
+  // Load home snippet page
+  $ajaxUtils.sendGetRequest(
+    aboutHtmlUrl,
+    function (homeHtml) {
+      insertHtml("#main-content", homeHtml);
+    },
+    false); // False here because we are getting just regular HTML from the server, so no need to process JSON.
+}
 
 
 // Load the menu items view
