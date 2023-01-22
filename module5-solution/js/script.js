@@ -165,7 +165,23 @@ function buildAndShowHomeHTML2 (categories) {
   $ajaxUtils.sendGetRequest(
     aboutHtmlUrl,
     function (homeHtml) {
-      insertHtml("#main-content", homeHtml);
+      var randomNumber = Math.ceil(Math.random() * 5);
+      // var homeHtmlToInsertIntoMainPage = insertProperty(homeHtml, "class1", "fa fa-star");
+      var finalHtml = homeHtml;
+      for (i = 1; i <= randomNumber; i++) {
+        var className = "class" + i;
+        var homeHtmlToInsertIntoMainPage = insertProperty(finalHtml, className, "fa fa-star");
+        finalHtml = homeHtmlToInsertIntoMainPage;
+      }
+      for (i = randomNumber + 1; i <= 5; i++) {
+        var className = "class" + i;
+        var homeHtmlToInsertIntoMainPage = insertProperty(finalHtml, className, "fa fa-star-o");
+        finalHtml = homeHtmlToInsertIntoMainPage;
+      }
+      console.log("finalHtml", finalHtml);
+
+      var homeHtmlToInsertIntoMainPage = insertProperty(finalHtml, "ratingNumber", randomNumber);
+      insertHtml("#main-content", homeHtmlToInsertIntoMainPage);
     },
     false); // False here because we are getting just regular HTML from the server, so no need to process JSON.
 }
