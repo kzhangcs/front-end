@@ -118,9 +118,7 @@ function buildAndShowHomeHTML (categories) {
       // it into the home html snippet.
       //
       // var homeHtmlToInsertIntoMainPage = ....
-      console.log("chosenCategoryShortName.short_name", chosenCategoryShortName.short_name);
       var homeHtmlToInsertIntoMainPage = insertProperty(homeHtml, "randomCategoryShortName", "'" + chosenCategoryShortName.short_name + "'" );
-      console.log("homeHtmlToInsertIntoMainPage", homeHtmlToInsertIntoMainPage);
 
       // TODO: STEP 4: Insert the produced HTML in STEP 3 into the main page
       // Use the existing insertHtml function for that purpose. Look through this code for an example
@@ -152,22 +150,21 @@ dc.loadMenuCategories = function () {
 };
 
 // Load the menu categories view
-dc.loadMenuCategories2 = function () {
+dc.loadStarRating = function () {
   showLoading("#main-content");
   $ajaxUtils.sendGetRequest(
     allCategoriesUrl,
-    buildAndShowHomeHTML2, // ***** <---- TODO: STEP 1: Substitute [...] ******
+    buildAndShowAboutHTML,
     true); // Explicitly setting the flag to get JSON from server processed into an object literal
 };
 
-function buildAndShowHomeHTML2 (categories) {
+function buildAndShowAboutHTML (categories) {
   // Load home snippet page
   $ajaxUtils.sendGetRequest(
     aboutHtmlUrl,
-    function (homeHtml) {
+    function (aboutHtml) {
       var randomNumber = Math.ceil(Math.random() * 5);
-      // var homeHtmlToInsertIntoMainPage = insertProperty(homeHtml, "class1", "fa fa-star");
-      var finalHtml = homeHtml;
+      var finalHtml = aboutHtml;
       for (i = 1; i <= randomNumber; i++) {
         var className = "class" + i;
         var homeHtmlToInsertIntoMainPage = insertProperty(finalHtml, className, "fa fa-star");
@@ -178,8 +175,6 @@ function buildAndShowHomeHTML2 (categories) {
         var homeHtmlToInsertIntoMainPage = insertProperty(finalHtml, className, "fa fa-star-o");
         finalHtml = homeHtmlToInsertIntoMainPage;
       }
-      console.log("finalHtml", finalHtml);
-
       var homeHtmlToInsertIntoMainPage = insertProperty(finalHtml, "ratingNumber", randomNumber);
       insertHtml("#main-content", homeHtmlToInsertIntoMainPage);
     },
