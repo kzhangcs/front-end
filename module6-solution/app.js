@@ -1,25 +1,16 @@
 (function () {
   'use strict';
   
-  angular.module('DIApp', [])
-  .controller('DIController', DIController);
+  angular.module('LunchCheck', [])
+  .controller('LunchCheckController', LunchCheckController);
   
-  DIController.$inject = ['$scope', '$filter'];
-  function DIController($scope, $filter) {
+  LunchCheckController.$inject = ['$scope', '$filter'];
+  function LunchCheckController($scope, $filter) {
     $scope.name = "";
     $scope.stateOfBeing = "";
     $scope.color = "";
 
-    $scope.sayMessage = function () {
-      return "Yaakov likes to eat healthy snacks at night!";
-    };
-  
-    $scope.upper = function () {
-      var upCase = $filter('uppercase');
-      $scope.name = upCase($scope.name);
-    };
-
-    $scope.feedYaakov = function () {
+    $scope.countItems = function () {
       if ($scope.name === "") { 
         $scope.stateOfBeing = "Please enter data first";
         $scope.color = "red";
