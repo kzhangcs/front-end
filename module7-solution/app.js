@@ -27,7 +27,11 @@ function ShoppingListShowController(ShoppingListService) {
   showList.items = ShoppingListService.getItems();
 
   showList.removeItem = function (itemIndex) {
-    ShoppingListService.removeItem(itemIndex);
+    try {
+      ShoppingListService.removeItem(itemIndex);
+    } catch (error) {
+      showList.errorMessage = error.message;
+    }
   };
 }
 
@@ -36,7 +40,7 @@ function ShoppingListShowController2(ShoppingListService) {
   var showList = this;
 
   showList.items = ShoppingListService.getItems2();
-
+  showList.errorMessage = "Nothing bought yet.";
 }
 
 
@@ -44,8 +48,14 @@ function ShoppingListService() {
   var service = this;
 
   // List of shopping items
-  var items = [{name: "cookies", quantity: "10"}, {name: "cookies", quantity: "10"}]; 
-  var items2 = [{name: "cookies", quantity: "10"}]; 
+  var items = [
+                {name: "cookie1", quantity: "10"}, 
+                {name: "cookie2", quantity: "10"}, 
+                {name: "cookie3", quantity: "10"},
+                {name: "cookie4", quantity: "10"},
+                {name: "cookie5", quantity: "10"}
+              ];
+  var items2 = [];
 
   service.addItem = function (itemName, quantity) {
     var item = {
@@ -59,6 +69,10 @@ function ShoppingListService() {
     var temp1 = items[itemIndex];
     items.splice(itemIndex, 1);
     items2.push(temp1);
+
+    if (items.length === 0) {
+      throw new Error("Everything is bought!");
+    }
   };
 
   service.getItems = function () {
@@ -68,6 +82,7 @@ function ShoppingListService() {
   service.getItems2 = function () {
     return items2;
   };
+
 }
 
 })();
