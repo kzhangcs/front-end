@@ -35,9 +35,9 @@
      <h2>To Buy:</h2>
      <ul>
        <li ng-repeat="item in showList.items">
-        Buy {{ item.quantity }} {{ item.name }}
-         <button class="btn btn-default"  ng-click="showList.removeItem($index);"><span class="glyphicon glyphicon-ok"></span> Bought</button>
-         <button ng-click="showList.removeItem($index);">Remove Item</button>
+        Buy {{ item.quantity }} {{ item.name }}  {{ item.price }} 
+        <input type="number" ng-model="item.selected"  style="width: 50px; margin-left: 10px">
+        <button class="btn btn-default"  ng-click="showList.removeItem($index,item.selected);"><span class="glyphicon glyphicon-ok"></span> Buy</button>
        </li>
      </ul>
     <div ng-if="showList.errorMessage" class="emptyMessage">{{showList.errorMessage}}</div>
@@ -48,8 +48,7 @@
      <h2>Already Bought:</h2>
      <ul>
        <li ng-repeat="item in showList.items">
-         Bought {{ item.quantity }} {{ item.name }}
-         <button ng-click="showList.removeItem($index);">Remove Item</button>
+         Bought {{ item.quantity }} {{ item.name }} for total price of {{item.selected * item.price}}
        </li>
      </ul>
      <div ng-if="showList.items.length === 0" class="emptyMessage">{{showList.errorMessage}}</div>
