@@ -31,11 +31,11 @@
   <div class="row">
 
     <!-- To Buy List -->
-    <div class="col-md-6" ng-controller='ShoppingListShowController as showList'>
+    <div class="col-md-6" ng-controller='ToBuyController as showList'>
      <h2>To Buy:</h2>
      <ul>
        <li ng-repeat="item in showList.items">
-        Buy {{ item.quantity }} {{ item.name }}  {{ item.price  | currency }}
+        Buy {{ item.quantity }} {{ item.name }}  {{ item.pricePerItem  | currency }}
         <input type="number" ng-model="item.selected"  style="width: 50px; margin-left: 10px">
         <button class="btn btn-default"  ng-click="showList.removeItem($index,item.selected);"><span class="glyphicon glyphicon-ok"></span> Buy</button>
        </li>
@@ -44,11 +44,11 @@
     </div>
 
     <!-- Already Bought List -->
-    <div class="col-md-6" ng-controller='ShoppingListShowController2 as showList'>
+    <div class="col-md-6" ng-controller='AlreadyBoughtController as showList'>
      <h2>Already Bought:</h2>
      <ul>
        <li ng-repeat="item in showList.items">
-         Bought {{ item.quantity }} {{ item.name }} for total price of {{item.selected * item.price  | currency :  "$$$$$"}}
+         Bought {{ item.quantity }} {{ item.name }} for total price of {{item.selected * item.pricePerItem  | currency :  "$$$$$"}}
        </li>
      </ul>
      <div ng-if="showList.items.length === 0" class="emptyMessage">{{showList.errorMessage}}</div>
