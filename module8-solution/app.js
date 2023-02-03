@@ -37,9 +37,11 @@ function MenuCategoriesController(MenuCategoriesService) {
     promise.then(function (response) {
       console.log("response", response);
       menu.found = response;
+      menu.errorMessage = "";
     })
     .catch(function (error) {
       menu.errorMessage = error.message;
+      menu.found = [];
       console.log("error.message", error.message);
       console.log("Something went terribly wrong.");
     });
@@ -63,9 +65,9 @@ function MenuCategoriesController(MenuCategoriesService) {
 MenuCategoriesService.$inject = ['$http', 'ApiBasePath'];
 function MenuCategoriesService($http, ApiBasePath) {
   var service = this;
-  var foundItems = [];
 
   service.getMenuForCategory = function (shortName) {
+    var foundItems = [];
     console.log("shortName2", shortName);
     return $http({
       method: "GET",
