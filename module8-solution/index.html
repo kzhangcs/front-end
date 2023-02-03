@@ -37,6 +37,7 @@
     bad-remove="menu.removeItem"
       on-remove="menu.removeItem(index)"></shopping-list>
 
+      <div class="error" ng-if="menu.errorMessage">{{menu.errorMessage}}</div>
   </div>
 
 </body>

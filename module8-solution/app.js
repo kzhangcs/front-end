@@ -39,6 +39,8 @@ function MenuCategoriesController(MenuCategoriesService) {
       menu.found = response;
     })
     .catch(function (error) {
+      menu.errorMessage = error.message;
+      console.log("error.message", error.message);
       console.log("Something went terribly wrong.");
     });
 
@@ -91,6 +93,9 @@ function MenuCategoriesService($http, ApiBasePath) {
         }
       }
 
+      if (foundItems.length===0) {
+        throw new Error ("Nothing found");
+      }
       // return processed items
       return foundItems;
   });
