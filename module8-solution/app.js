@@ -27,7 +27,8 @@ MenuCategoriesController.$inject = ['MenuCategoriesService'];
 function MenuCategoriesController(MenuCategoriesService) {
   var menu = this;
 
-  menu.temp1 = MenuCategoriesService.getItems();
+  // menu.temp1 = MenuCategoriesService.getItems();
+  menu.temp1 = [];
   menu.logMenuItems = function (shortName) {
     console.log("shortName", shortName);
 
@@ -35,7 +36,7 @@ function MenuCategoriesController(MenuCategoriesService) {
 
     promise.then(function (response) {
       console.log("response", response);
-      // menu.temp1 = response;
+      menu.temp1 = response;
     })
     .catch(function (error) {
       console.log("Something went terribly wrong.");
@@ -51,7 +52,7 @@ function MenuCategoriesController(MenuCategoriesService) {
 
   menu.removeItem = function (itemIndex) {
     console.log("here4");
-    MenuCategoriesService.removeItem(itemIndex);
+    menu.temp1.splice(itemIndex, 1);
   };
 
 }
@@ -94,17 +95,5 @@ function MenuCategoriesService($http, ApiBasePath) {
       return foundItems;
   });
   };
-
-  service.removeItem = function (itemIndex) {
-    console.log("here5");
-    foundItems.splice(itemIndex, 1);
-  };
-
-  service.getItems = function () {
-    console.log("here3");
-
-    return foundItems;
-  };
 }
-
 })();
