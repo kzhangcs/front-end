@@ -20,15 +20,23 @@
       <button class="btn btn-primary" ng-click="menu.logMenuItems(newItemName);">Narrow It Down For Me!</button>
     </div>
 
-    <!-- <found-items found-items="...." on-remove="...."></found-items> -->
+    <!-- <found-items found-items="menu.temp1" on-remove="...."></found-items> -->
 
-    <div style="margin-top:100px; width:100%;">
-      <ul ng-repeat="temp in menu.temp1">
-        <div>
+    <!-- <div style="margin-top:100px; width:100%;">
+      <ol>
+        <li ng-repeat="temp in menu.temp1">
           {{ temp }}
-        </div>
-      </ul>
-    </div>
+          <button ng-click="menu.removeItem($index);">Bad Remove Item</button>
+          <button ng-click="menu.removeItem({index: $index});">Remove Item</button>
+        </li>
+      </ol>
+  </div> -->
+
+    <shopping-list
+    items="menu.temp1"
+    bad-remove="menu.removeItem"
+      on-remove="menu.removeItem(index)"></shopping-list>
+
   </div>
 
 </body>
