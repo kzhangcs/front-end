@@ -1,21 +1,21 @@
 (function () {
 'use strict';
 
-angular.module('MenuCategoriesApp', [])
-.controller('MenuCategoriesController', MenuCategoriesController)
-.service('MenuCategoriesService', MenuCategoriesService)
+angular.module('NarrowItDownApp', [])
+.controller('NarrowItDownController', NarrowItDownController)
+.service('MenuSearchService', MenuSearchService)
 .constant('ApiBasePath', "https://coursera-jhu-default-rtdb.firebaseio.com")
-.directive('shoppingList', ShoppingListDirective);
+.directive('foundItems', FoundItemsDirective);
 
-function ShoppingListDirective() {
+function FoundItemsDirective() {
   var ddo = {
-    templateUrl: 'shoppingList.html',
+    templateUrl: 'foundItems.html',
     scope: {
-      items: '<',
+      found: '<',
       badRemove: '=',
       onRemove: '&'
     },
-    controller: MenuCategoriesController,
+    controller: NarrowItDownController,
     controllerAs: 'menu',
     bindToController: true
   };
@@ -23,16 +23,16 @@ function ShoppingListDirective() {
   return ddo;
 }
 
-MenuCategoriesController.$inject = ['MenuCategoriesService'];
-function MenuCategoriesController(MenuCategoriesService) {
+NarrowItDownController.$inject = ['MenuSearchService'];
+function NarrowItDownController(MenuSearchService) {
   var menu = this;
 
-  // menu.found = MenuCategoriesService.getItems();
+  // menu.found = MenuSearchService.getItems();
   menu.found = [];
-  menu.logMenuItems = function (shortName) {
-    console.log("shortName", shortName);
+  menu.getMatchedMenuItems = function (searchTerm) {
+    console.log("searchTerm", searchTerm);
 
-    var promise = MenuCategoriesService.getMenuForCategory(shortName);
+    var promise = MenuSearchService.getMenuForCategory(searchTerm);
 
     promise.then(function (response) {
       console.log("response", response);
@@ -62,13 +62,13 @@ function MenuCategoriesController(MenuCategoriesService) {
 }
 
 
-MenuCategoriesService.$inject = ['$http', 'ApiBasePath'];
-function MenuCategoriesService($http, ApiBasePath) {
+MenuSearchService.$inject = ['$http', 'ApiBasePath'];
+function MenuSearchService($http, ApiBasePath) {
   var service = this;
 
-  service.getMenuForCategory = function (shortName) {
+  service.getMenuForCategory = function (searchTerm) {
     var foundItems = [];
-    console.log("shortName2", shortName);
+    console.log("searchTerm2", searchTerm);
     return $http({
       method: "GET",
       url: (ApiBasePath + "/menu_items.json"),
@@ -83,12 +83,12 @@ function MenuCategoriesService($http, ApiBasePath) {
         for(var i = 0; i < catagory.menu_items.length; i++) {
           // console.log("catagory.menu_items[i]", catagory.menu_items[i]);
           var description = catagory.menu_items[i].description;
-          if (description.indexOf(shortName) !== -1) {
+          if (description.indexOf(searchTerm) !== -1) {
             // console.log("description", description);
             var newItem = {
               name: catagory.menu_items[i].name,
-              description: catagory.menu_items[i].description,
               short_name: catagory.menu_items[i].short_name,
+              description: catagory.menu_items[i].description,
             };
             foundItems.push(newItem);
           }
