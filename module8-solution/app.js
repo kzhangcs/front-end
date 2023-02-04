@@ -55,7 +55,6 @@ function MenuSearchService($http, ApiBasePath) {
 
   service.getMenuForCategory = function (searchTerm) {
     var foundItems = [];
-    console.log("searchTerm2", searchTerm);
     return $http({
       method: "GET",
       url: (ApiBasePath + "/menu_items.json"),
@@ -76,7 +75,7 @@ function MenuSearchService($http, ApiBasePath) {
         }
       }
 
-      if (foundItems.length===0) {
+      if (searchTerm === "" || foundItems.length===0) {
         throw new Error ("Nothing found");
       }
 
