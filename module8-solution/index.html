@@ -20,24 +20,14 @@
       <button class="btn btn-primary" ng-click="menu.getMatchedMenuItems(searchTerm);">Narrow It Down For Me!</button>
     </div>
 
-    <!-- <found-items found-items="menu.found" on-remove="...."></found-items> -->
-
-    <!-- <div style="margin-top:100px; width:100%;">
-      <ol>
-        <li ng-repeat="temp in menu.found">
-          {{ temp }}
-          <button ng-click="menu.removeItem($index);">Bad Remove Item</button>
-          <button ng-click="menu.removeItem({index: $index});">Remove Item</button>
-        </li>
-      </ol>
-  </div> -->
-
-    <found-items
-    found="menu.found"
-    bad-remove="menu.removeItem"
-      on-remove="menu.removeItem(index)"></found-items>
+    <div style="margin-top:80px">
+      <found-items
+        found="menu.found"
+        on-remove="menu.removeItem(index)">
+      </found-items>
 
       <div class="error" ng-if="menu.errorMessage">{{menu.errorMessage}}</div>
+    </div>
   </div>
 
 </body>

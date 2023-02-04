@@ -1,8 +1,6 @@
-<h3>Title</h3>
-<ol>
-  <li ng-repeat="temp in menu.found">
-    {{ temp }}
-    <button ng-click="menu.badRemove($index);">Bad Remove Item</button>
+<ul>
+  <li ng-repeat="item in menu.found">
+    {{ item }}
     <button ng-click="menu.onRemove({index: $index});">Remove Item</button>
   </li>
-</ol>
+</ul>
