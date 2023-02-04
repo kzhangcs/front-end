@@ -5,8 +5,8 @@ angular.module('ShoppingList')
 .service('ShoppingListService', ShoppingListService);
 
 
-ShoppingListService.$inject = ['$q', '$timeout']
-function ShoppingListService($q, $timeout) {
+ShoppingListService.$inject = ['$q', '$timeout', '$http']
+function ShoppingListService($q, $timeout, $http) {
   var service = this;
 
   // List of shopping items
@@ -32,15 +32,13 @@ function ShoppingListService($q, $timeout) {
   // Simulates call to server
   // Returns a promise, NOT items array directly
   service.getItems = function () {
-    var deferred = $q.defer();
-
-    // Wait 2 seconds before returning
-    $timeout(function () {
-      // deferred.reject(items);
-      deferred.resolve(items);
-    }, 800);
-
-    return deferred.promise;
+    return $http({
+      method: "GET",
+      url: ("https://coursera-jhu-default-rtdb.firebaseio.com/categories.json"),
+    }).then(function (result) {
+      console.log("result", result);
+      return result.data;
+  });
   };
 }
 
