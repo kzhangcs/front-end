@@ -7,8 +7,8 @@ angular.module('ShoppingList')
 
 MainShoppingListController.$inject = ['items'];
 function MainShoppingListController(items) {
-  var mainList = this;
-  mainList.items = items;
+  var categories = this;
+  categories.items = items;
 }
 
 })();

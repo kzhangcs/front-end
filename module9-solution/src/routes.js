@@ -20,10 +20,10 @@ function RoutesConfig($stateProvider, $urlRouterProvider) {
   })
 
   // Premade list page
-  .state('mainList', {
+  .state('categories', {
     url: '/main-list',
     templateUrl: 'src/shoppinglist/templates/main-shoppinglist.template.html',
-    controller: 'MainShoppingListController as mainList',
+    controller: 'MainShoppingListController as categories',
     resolve: {
       items: ['ShoppingListService', function (ShoppingListService) {
         return ShoppingListService.getItems();
