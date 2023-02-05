@@ -2,8 +2,4 @@
 <a ui-sref="categories">categories list</a> &lt;
 
 <span> items list </span>
-<ul>
-    <li ng-repeat="item in itemList.items">
-        {{ item.name }}
-    </li>
-</ul>
+<items items="itemList.items"></items>
