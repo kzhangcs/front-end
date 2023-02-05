@@ -5,11 +5,11 @@ angular.module('ShoppingList')
 .controller('ItemDetailController', ItemDetailController);
 
 // 'item' is injected through state's resolve
-ItemDetailController.$inject = ['item']
-function ItemDetailController(item) {
-  console.log("here items", item)
+ItemDetailController.$inject = ['items']
+function ItemDetailController(items) {
+  console.log("here items", items)
   var mainList = this;
-  mainList.items = item;
+  mainList.items = items;
 /*   var itemDetail = this;
   itemDetail.name = item.name;
   itemDetail.quantity = item.quantity;
