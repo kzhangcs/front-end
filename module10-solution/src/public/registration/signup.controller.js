@@ -3,16 +3,20 @@
 
 angular.module('public')
 .controller('SignupController', SignupController)
+.controller('ShoppingListShowController', ShoppingListShowController)
 .service('ShoppingListService', ShoppingListService);
 
 SignupController.$inject = ['ShoppingListService'];
 function SignupController(ShoppingListService) {
-  // this.user = user;
-
   this.submit = function() {
     console.log("here in register");
     ShoppingListService.addItem(this.user);
   }
+}
+
+ShoppingListShowController.$inject = ['ShoppingListService'];
+function ShoppingListShowController(ShoppingListService) {
+  this.items = ShoppingListService.getItems();
 }
 
 function ShoppingListService() {
@@ -28,6 +32,7 @@ function ShoppingListService() {
   };
 
   service.getItems = function () {
+    console.log("here in getItems", items)
     return items;
   };
 }

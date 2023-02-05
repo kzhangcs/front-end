@@ -51,6 +51,17 @@ function routeConfig ($stateProvider) {
           return MenuService.getCategories();
         }]
       }
+    })
+    .state('public.info', {
+      url: '/info',
+      templateUrl: 'src/public/registration/info.html',
+      controller: 'ShoppingListShowController',
+      controllerAs: 'reg',
+      resolve: {
+        menuCategories: ['MenuService', function (MenuService) {
+          return MenuService.getCategories();
+        }]
+      }
     });
 }
 })();
