@@ -22,7 +22,7 @@ function RoutesConfig($stateProvider, $urlRouterProvider) {
   // Premade list page
   .state('categories', {
     url: '/main-list',
-    templateUrl: 'src/shoppinglist/templates/main-shoppinglist.template.html',
+    templateUrl: 'src/shoppinglist/templates/main-categories.template.html',
     controller: 'MainCategoriesController as categories',
     resolve: {
       categories: ['MenuDataService', function (MenuDataService) {
