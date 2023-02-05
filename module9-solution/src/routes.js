@@ -25,8 +25,8 @@ function RoutesConfig($stateProvider, $urlRouterProvider) {
     templateUrl: 'src/shoppinglist/templates/main-shoppinglist.template.html',
     controller: 'MainShoppingListController as categories',
     resolve: {
-      items: ['ShoppingListService', function (ShoppingListService) {
-        return ShoppingListService.getAllCategories();
+      items: ['MenuDataService', function (MenuDataService) {
+        return MenuDataService.getAllCategories();
       }]
     }
   })
@@ -36,11 +36,11 @@ function RoutesConfig($stateProvider, $urlRouterProvider) {
     templateUrl: 'src/shoppinglist/templates/item-detail.template.html',
     controller: 'ItemDetailController as itemList',
     resolve: {
-      item: ['$stateParams', 'ShoppingListService',
-            function ($stateParams, ShoppingListService) {
-              return ShoppingListService.getAllCategories()
+      item: ['$stateParams', 'MenuDataService',
+            function ($stateParams, MenuDataService) {
+              return MenuDataService.getAllCategories()
                 .then(function (items) {
-                  const temp1 = ShoppingListService.getItemsForCategory(items[$stateParams.itemId].short_name);
+                  const temp1 = MenuDataService.getItemsForCategory(items[$stateParams.itemId].short_name);
                   console.log("temp1", temp1);
                   return temp1;
                 });
