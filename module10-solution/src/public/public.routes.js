@@ -44,8 +44,8 @@ function routeConfig ($stateProvider) {
     .state('public.signup', {
       url: '/signup',
       templateUrl: 'src/public/registration/signup.html',
-      controller: 'MenuController',
-      controllerAs: 'menuCtrl',
+      controller: 'SignupController',
+      controllerAs: 'reg',
       resolve: {
         menuCategories: ['MenuService', function (MenuService) {
           return MenuService.getCategories();
