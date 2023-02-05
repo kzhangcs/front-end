@@ -7,10 +7,13 @@ angular.module('ShoppingList')
 // 'item' is injected through state's resolve
 ItemDetailController.$inject = ['item']
 function ItemDetailController(item) {
-  var itemDetail = this;
+  console.log("here items", item)
+  var mainList = this;
+  mainList.items = item;
+/*   var itemDetail = this;
   itemDetail.name = item.name;
   itemDetail.quantity = item.quantity;
-  itemDetail.description = item.description;
+  itemDetail.description = item.description; */
 }
 
 })();

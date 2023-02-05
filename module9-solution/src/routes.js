@@ -34,13 +34,15 @@ function RoutesConfig($stateProvider, $urlRouterProvider) {
   .state('itemDetail', {
     url: '/item-detail/{itemId}',
     templateUrl: 'src/shoppinglist/templates/item-detail.template.html',
-    controller: 'ItemDetailController as itemDetail',
+    controller: 'ItemDetailController as itemList',
     resolve: {
       item: ['$stateParams', 'ShoppingListService',
             function ($stateParams, ShoppingListService) {
               return ShoppingListService.getItems()
                 .then(function (items) {
-                  return items[$stateParams.itemId];
+                  const temp1 = ShoppingListService.getItemsForCategory(items[$stateParams.itemId].short_name);
+                  console.log("temp1", temp1);
+                  return temp1;
                 });
             }]
     }
