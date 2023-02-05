@@ -56,7 +56,7 @@ function routeConfig ($stateProvider) {
       url: '/info',
       templateUrl: 'src/public/registration/info.html',
       controller: 'ShoppingListShowController',
-      controllerAs: 'reg',
+      controllerAs: 'info',
       resolve: {
         menuCategories: ['MenuService', function (MenuService) {
           return MenuService.getCategories();

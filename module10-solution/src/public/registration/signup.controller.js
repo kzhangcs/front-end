@@ -33,7 +33,7 @@ function ShoppingListService() {
 
   service.getItems = function () {
     console.log("here in getItems", items)
-    return items;
+    return items?.[0];
   };
 }
 })();
