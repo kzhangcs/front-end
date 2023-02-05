@@ -26,7 +26,7 @@ function RoutesConfig($stateProvider, $urlRouterProvider) {
     controller: 'MainShoppingListController as categories',
     resolve: {
       items: ['ShoppingListService', function (ShoppingListService) {
-        return ShoppingListService.getItems();
+        return ShoppingListService.getAllCategories();
       }]
     }
   })
@@ -38,7 +38,7 @@ function RoutesConfig($stateProvider, $urlRouterProvider) {
     resolve: {
       item: ['$stateParams', 'ShoppingListService',
             function ($stateParams, ShoppingListService) {
-              return ShoppingListService.getItems()
+              return ShoppingListService.getAllCategories()
                 .then(function (items) {
                   const temp1 = ShoppingListService.getItemsForCategory(items[$stateParams.itemId].short_name);
                   console.log("temp1", temp1);

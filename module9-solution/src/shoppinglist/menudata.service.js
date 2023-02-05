@@ -11,7 +11,7 @@ function ShoppingListService($q, $timeout, $http) {
 
   // Simulates call to server
   // Returns a promise, NOT items array directly
-  service.getItems = function () {
+  service.getAllCategories = function () {
     return $http({
       method: "GET",
       url: ("https://coursera-jhu-default-rtdb.firebaseio.com/categories.json"),
