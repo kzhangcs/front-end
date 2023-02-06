@@ -32,6 +32,9 @@ function ShoppingListService($http) {
     console.log("here in addItem: user.menu", user.menu)
     const temp1 = user.menu.charAt(0);
     const temp2 = user.menu.charAt(1) - 1;
+    user.temp1 = temp1;
+    user.temp2 = temp2 + 1;
+    
     console.log("here in addItem: temp1", temp1);
     console.log("here in addItem: temp2", temp2);
 
@@ -40,9 +43,11 @@ function ShoppingListService($http) {
 
     promise.then(function (response) {
       console.log("here in promise, response", response);
+      user.menu_saved = response;
     })
     .catch(function (error) {
     });
+    console.log("here in addItem: user", user)
     items.push(user);
   };
 
