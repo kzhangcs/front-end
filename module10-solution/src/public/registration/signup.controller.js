@@ -4,17 +4,17 @@
 angular.module('public')
 .controller('SignupController', SignupController)
 .controller('ShoppingListShowController', ShoppingListShowController)
-.service('ShoppingListService', ShoppingListService);
+.service('RegistrationService', RegistrationService);
 
-SignupController.$inject = ['ShoppingListService'];
-function SignupController(ShoppingListService) {
-  ShoppingListService.setCompletedFalse();
+SignupController.$inject = ['RegistrationService'];
+function SignupController(RegistrationService) {
+  RegistrationService.setCompletedFalse();
 
   this.submit = function() {
     console.log("here in register");
-    ShoppingListService.addItem(this.user);
+    RegistrationService.addItem(this.user);
     this.completed = true;
-    ShoppingListService.setCompleted();
+    RegistrationService.setCompleted();
   }
 
   this.upper = async function () {
@@ -26,7 +26,7 @@ function SignupController(ShoppingListService) {
       const temp1 = this.user.menu.charAt(0);
       const temp2 = this.user.menu.charAt(1) - 1;
 
-      const promise =  ShoppingListService.getAllCategories(temp1, temp2);
+      const promise =  RegistrationService.getAllCategories(temp1, temp2);
 
       promise2 = await promise.then(function (response) {
         if (!response) {
@@ -42,14 +42,14 @@ function SignupController(ShoppingListService) {
   };
 }
 
-ShoppingListShowController.$inject = ['ShoppingListService'];
-function ShoppingListShowController(ShoppingListService) {
-  this.items = ShoppingListService.getItems();
-  this.completed = ShoppingListService.getCompleted();
+ShoppingListShowController.$inject = ['RegistrationService'];
+function ShoppingListShowController(RegistrationService) {
+  this.items = RegistrationService.getItems();
+  this.completed = RegistrationService.getCompleted();
 }
 
-ShoppingListService.$inject = ['$http']
-function ShoppingListService($http) {
+RegistrationService.$inject = ['$http']
+function RegistrationService($http) {
   var service = this;
   var completed = false;
   console.log("here in service");
