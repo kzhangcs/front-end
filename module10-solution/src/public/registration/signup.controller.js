@@ -21,8 +21,13 @@ function SignupController(RegistrationService) {
 
     if (this.user?.menu) {
 
-      const temp1 = this.user.menu.charAt(0);
-      const temp2 = this.user.menu.charAt(1) - 1;
+      const temp2 = this.user.menu.match(/\d+/);
+      const temp2_index  = this.user.menu.indexOf(temp2);
+      const temp1 = this.user.menu.substring(0, temp2_index);
+
+      console.log("temp2", temp2);
+      console.log("temp2_index", temp2_index);
+      console.log("temp1", temp1);
 
       const promise =  RegistrationService.getAllCategories(temp1, temp2);
 

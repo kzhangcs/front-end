@@ -16,10 +16,11 @@ function RegistrationService($http) {
   service.addItem = function (user) {
     console.log("here in addItem: user", user)
     console.log("here in addItem: user.menu", user.menu)
-    const temp1 = user.menu.charAt(0);
-    const temp2 = user.menu.charAt(1) - 1;
+      const temp2 = user.menu.match(/\d+/);
+      const temp2_index = user.menu.indexOf(temp2);
+      const temp1 = user.menu.substring(0, temp2_index);
     user.temp1 = temp1;
-    user.temp2 = temp2 + 1;
+    user.temp2 = temp2;
     console.log("here in addItem: temp1", temp1);
     console.log("here in addItem: temp2", temp2);
 
@@ -37,6 +38,7 @@ function RegistrationService($http) {
   };
 
   service.getAllCategories = function (temp1, temp2) {
+    temp2 -= 1;
     return $http({
       method: "GET",
       url: ("https://coursera-jhu-default-rtdb.firebaseio.com/menu_items/" + temp1 + "/menu_items/" + temp2 + ".json"),
@@ -47,7 +49,7 @@ function RegistrationService($http) {
 
   service.getItems = function () {
     console.log("here in getItems", items)
-    return items?.[0];
+    return items?.[items.length - 1];
   };
 
   service.setCompleted = function() {
