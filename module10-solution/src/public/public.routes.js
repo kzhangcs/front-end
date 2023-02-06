@@ -46,22 +46,12 @@ function routeConfig ($stateProvider) {
       templateUrl: 'src/public/registration/signup.html',
       controller: 'SignupController',
       controllerAs: 'reg',
-      resolve: {
-        menuCategories: ['MenuService', function (MenuService) {
-          return MenuService.getCategories();
-        }]
-      }
     })
     .state('public.info', {
       url: '/info',
       templateUrl: 'src/public/registration/info.html',
       controller: 'ShoppingListShowController',
       controllerAs: 'info',
-      resolve: {
-        menuCategories: ['MenuService', function (MenuService) {
-          return MenuService.getCategories();
-        }]
-      }
     });
 }
 })();

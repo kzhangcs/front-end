@@ -3,7 +3,6 @@
 
 angular.module('public')
 .controller('SignupController', SignupController)
-.controller('ShoppingListShowController', ShoppingListShowController)
 
 SignupController.$inject = ['RegistrationService'];
 function SignupController(RegistrationService) {
@@ -39,12 +38,6 @@ function SignupController(RegistrationService) {
     }
     this.invalid_menu = temp3;
   };
-}
-
-ShoppingListShowController.$inject = ['RegistrationService'];
-function ShoppingListShowController(RegistrationService) {
-  this.items = RegistrationService.getItems();
-  this.completed = RegistrationService.getCompleted();
 }
 
 
