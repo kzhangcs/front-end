@@ -2,8 +2,7 @@
 
     <h1>Sign Up</h1>
 
-    <fieldset>
-      <legend>Registration</legend>
+    <fieldset  style="margin-top: 2%;">
       <form name='regForm' novalidate>
 
         <input type="text" name="username" placeholder="Pick a username"
@@ -57,9 +56,7 @@
     </fieldset>
 
     <div id="info" ng-if="reg.completed">
-      Username: {{ reg.user.username}} <br>
-      Email: {{ reg.user.email}} <br>
-      Phone: {{ reg.user.phone }}
+      Your information has been saved
     </div>
 
 </div>

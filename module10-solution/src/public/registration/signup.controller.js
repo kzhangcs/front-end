@@ -11,6 +11,7 @@ function SignupController(ShoppingListService) {
   this.submit = function() {
     console.log("here in register");
     ShoppingListService.addItem(this.user);
+    this.completed = true;
   }
 }
 
