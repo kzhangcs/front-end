@@ -8,10 +8,13 @@ angular.module('public')
 
 SignupController.$inject = ['ShoppingListService'];
 function SignupController(ShoppingListService) {
+  ShoppingListService.setCompletedFalse();
+
   this.submit = function() {
     console.log("here in register");
     ShoppingListService.addItem(this.user);
     this.completed = true;
+    ShoppingListService.setCompleted();
   }
 
   this.upper = async function () {
@@ -42,11 +45,13 @@ function SignupController(ShoppingListService) {
 ShoppingListShowController.$inject = ['ShoppingListService'];
 function ShoppingListShowController(ShoppingListService) {
   this.items = ShoppingListService.getItems();
+  this.completed = ShoppingListService.getCompleted();
 }
 
 ShoppingListService.$inject = ['$http']
 function ShoppingListService($http) {
   var service = this;
+  var completed = false;
   console.log("here in service");
   // List of shopping items
   var items = [];
@@ -89,5 +94,19 @@ function ShoppingListService($http) {
     console.log("here in getItems", items)
     return items?.[0];
   };
+
+  service.setCompleted = function() {
+    completed = true;
+  }
+
+  service.setCompletedFalse = function() {
+    completed = false;
+  }
+
+
+  service.getCompleted = function() {
+    console.log("here in getCompleted", this.completed)
+    return completed;
+  }
 }
 })();

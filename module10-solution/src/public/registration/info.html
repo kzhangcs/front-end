@@ -8,8 +8,9 @@
       Phone: {{ reg.user.phone }}
     </div> -->
 
-    <div id="info" ng-if="reg.completed">
-      Username: {{ info.items.username}} <br>
+    <div id="info" ng-if="info.completed">
+      First Name: {{ info.items.firstname}} <br>
+      Last Name: {{ info.items.lastname}} <br>
       Email: {{ info.items.email}} <br>
       Phone: {{ info.items.phone }} <br>
       <h2>Favorite Dish</h2>
@@ -18,7 +19,7 @@
       <img class="img-responsive" width="250" height="150" ng-src="images/menu/{{info.items.temp1}}/{{info.items.menu}}.jpg"">
     </div>
 
-    <div id="info" ng-if="!reg.completed">
+    <div id="info" ng-if="!info.completed">
       <h3>Not Signed Up Yet. <a href="/#/signup"> Sign up Now</a> </h3>
     </div>
 
