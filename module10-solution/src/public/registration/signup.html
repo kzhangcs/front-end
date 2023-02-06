@@ -8,7 +8,6 @@
         <input type="text" name="firstname" placeholder="First Name"
           ng-model="reg.user.firstname"
           required>
-          {{ reg.user.firstname }}
           <span
             ng-if="regForm.firstname.$error.required && regForm.firstname.$touched">
             Please enter a first name
@@ -20,7 +19,6 @@
           required
           minlength="4"
           ng-maxlength="10">
-          {{ reg.user.lastname }}
           <span
             ng-if="regForm.lastname.$error.required && regForm.lastname.$touched">
             Please enter a last name
@@ -47,24 +45,15 @@
           ng-model="reg.user.menu"
           ng-blur="reg.upper();"
           required>
-          <!-- <span ng-if="regForm.phone.$invalid && regForm.phone.$touched">
-            Phone must be in the format ###-###-####.
-          </span> -->
           <span ng-if="reg.invalid_menu">
             No such menu number exists
           </span>
            <br>
 
-        <!-- <button
+        <button
           ng-disabled="regForm.$invalid"
-          ng-click="reg.submit()">Submit</button> -->
-
-          <button
           ng-click="reg.submit()">Submit</button>
 
-          <div style="margin-top: 10px;">
-            Form valid? {{ regForm.$valid }}
-          </div>
       </form>
     </fieldset>
 
