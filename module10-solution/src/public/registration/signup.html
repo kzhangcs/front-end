@@ -38,9 +38,15 @@
 
           <input type="text" name="menu" placeholder="Menu number"
           ng-model="reg.user.menu"
+          ng-blur="reg.upper();"
           required>
+          <!-- <span ng-if="regForm.phone.$invalid && regForm.phone.$touched">
+            Phone must be in the format ###-###-####.
+          </span> -->
+          <span ng-if="reg.invalid_menu">
+            No such menu number exists
           </span>
-          <br>
+           <br>
 
         <!-- <button
           ng-disabled="regForm.$invalid"

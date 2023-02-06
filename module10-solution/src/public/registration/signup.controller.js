@@ -13,6 +13,30 @@ function SignupController(ShoppingListService) {
     ShoppingListService.addItem(this.user);
     this.completed = true;
   }
+
+  this.upper = async function () {
+    let promise2;
+    let temp3;
+
+    if (this.user?.menu) {
+
+      const temp1 = this.user.menu.charAt(0);
+      const temp2 = this.user.menu.charAt(1) - 1;
+
+      const promise =  ShoppingListService.getAllCategories(temp1, temp2);
+
+      promise2 = await promise.then(function (response) {
+        if (!response) {
+          temp3 = true;
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+
+    }
+    this.invalid_menu = temp3;
+  };
 }
 
 ShoppingListShowController.$inject = ['ShoppingListService'];
